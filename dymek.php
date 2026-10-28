@@ -9,13 +9,11 @@
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       dymek
- * Domain Path:       /languages
  */
 
 defined( 'ABSPATH' ) || exit;
 
 define( 'DYMEK_VERSION', '0.1.0' );
-define( 'DYMEK_FILE', __FILE__ );
 define( 'DYMEK_DIR', plugin_dir_path( __FILE__ ) );
 define( 'DYMEK_URL', plugin_dir_url( __FILE__ ) );
 
@@ -29,13 +27,6 @@ require_once DYMEK_DIR . 'includes/class-admin.php';
 require_once DYMEK_DIR . 'includes/class-import.php';
 
 register_activation_hook( __FILE__, array( Dymek\Schema::class, 'install' ) );
-
-add_action(
-	'init',
-	static function () {
-		load_plugin_textdomain( 'dymek', false, dirname( plugin_basename( DYMEK_FILE ) ) . '/languages' );
-	}
-);
 
 add_action(
 	'plugins_loaded',
